@@ -1,0 +1,3 @@
+export const ADD_COUNT = 'ADD_COUNT';
+export const REQUEST_CURRENT_TIME = 'REQUEST_CURRENT_TIME';
+export const SET_CURRENT_TIME = 'SET_CURRENT_TIME';
