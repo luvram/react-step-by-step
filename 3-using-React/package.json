@@ -1,13 +1,8 @@
 {
-  "name": "using-React",
+  "name": "using-react",
   "version": "0.0.1",
   "description": "Try to use React",
   "private": true,
-  "babel": {
-    "presets": [
-      "react"
-    ]
-  },
   "dependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
