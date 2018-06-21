@@ -18,13 +18,14 @@ React 에서는 JSX라는 특별한 문법을 사용한다. 이 JSX 문법을 �
 
    
 
-3. 1에서 설치한 babel-preset-react 를 실제로 babel 이 인식할 수 있도록 설정해준다. ".babelrc" 를 추가한다.
+3. 1에서 설치한 babel-preset-react 를 실제로 babel 이 인식할 수 있도록 설정해준다. ".babelrc" 를 변경한다.
 
    ```json
    {
-     "presets": [
-         "react"
-     ]
+       "presets": [
+           "env",
+           "react"
+       ]
    }
    ```
 
@@ -37,7 +38,7 @@ React 에서는 JSX라는 특별한 문법을 사용한다. 이 JSX 문법을 �
    import { render } from 'react-dom';
    
    render(
-     <div>Hello! I'm React!</div>,
-     document.getElementById('app')
+       <div>Hello! I'm React!</div>,
+       document.getElementById('app')
    );
    ```

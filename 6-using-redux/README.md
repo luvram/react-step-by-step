@@ -20,13 +20,13 @@ Redux 는 앱의 상태를 관리하는 라이브러리이다. 상태란 체크�
    import { ADD_COUNT } from './action';
    
    export function calculate(state = { count: 1 }, action) {
-     switch (action.type) {
-       case ADD_COUNT:
-         const newState = Object.assign({}, state, { count: state.count + action.count });
-         return newState;
-       default:
-         return state;
-     }
+       switch (action.type) {
+           case ADD_COUNT:
+               const newState = Object.assign({}, state, { count: state.count + action.count });
+               return newState;
+           default:
+               return state;
+       }
    }
    ```
 
@@ -39,21 +39,21 @@ Redux 는 앱의 상태를 관리하는 라이브러리이다. 상태란 체크�
    import { calculate } from './reducer';
    
    const store = createStore(
-     calculate,
-     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // debug 용
+       calculate,
+       window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // debug 용
    );
    
    render(
-     <Provider store={store}>
-       <Router>
-         <div>
-           <Route exact path="/" component={Home} />
-           <Route path="/about" component={About} />
-         </div>
-       </Router>
-     </Provider>
-     ,
-     document.getElementById('app')
+       <Provider store={store}>
+           <Router>
+               <div>
+                   <Route exact path="/" component={Home} />
+                   <Route path="/about" component={About} />
+               </div>
+           </Router>
+       </Provider>
+       ,
+       document.getElementById('app')
    );
    
    
@@ -68,30 +68,30 @@ Redux 는 앱의 상태를 관리하는 라이브러리이다. 상태란 체크�
    import { ADD_COUNT } from './action';
    
    class Home extends Component {
-     render() {
-       const { count, addCount } = this.props;
-       return (
-         <div>
-           <span>{count}</span>
-           <button onClick={addCount}>+</button>
-         </div>
-       );
-     }
+       render() {
+           const { count, addCount } = this.props;
+           return (
+               <div>
+                   <span>{count}</span>
+                   <button onClick={addCount}>+</button>
+               </div>
+           );
+       }
    }
    
    const mapStateToProps = (state) => {
-     return {
-       count: state.count,
-     };
+       return {
+           count: state.count,
+       };
    };
    
    
    const mapDispatchToProps = (dispatch, ownProps) => {
-     return {
-       addCount: () => {
-         dispatch({ type: ADD_COUNT, count: 1 });
-       },
-     };
+       return {
+           addCount: () => {
+               dispatch({ type: ADD_COUNT, count: 1 });
+           },
+       };
    };
    export default connect(mapStateToProps, mapDispatchToProps)(Home);
    ```

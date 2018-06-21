@@ -6,11 +6,11 @@
    import React from 'react';
    
    class Home extends React.Component {
-     render() {
-       return (
-         <div>Hello! I'm Home component!</div>
-       );
-     }
+       render() {
+           return (
+               <div>Hello! I'm Home component!</div>
+           );
+       }
    }
    
    export default Home;
@@ -24,8 +24,8 @@
    import Home from './Home.jsx';
    
    render(
-     <Home />,
-     document.getElementById('app')
+       <Home />,
+       document.getElementById('app')
    );
    ```
 

@@ -18,15 +18,15 @@
 
    ```javascript
    module.exports = {
-     entry: ['./src/index.js'],
-     output: {
-       path: __dirname + '/dist',
-       publicPath: '/',
-       filename: 'bundle.js',
-     },
-     devServer: {
-       contentBase: './dist',
-     },
+       entry: ['./src/index.js'],
+       output: {
+           path: __dirname + '/dist',
+           publicPath: '/',
+           filename: 'bundle.js',
+       },
+       devServer: {
+           contentBase: './dist',
+       },
    };
    ```
 
@@ -45,15 +45,15 @@
    <!DOCTYPE html>
    <html>
    
-   <head>
-     <meta charset="UTF-8">
-     <title>React Tutorial</title>
-   </head>
+       <head>
+           <meta charset="UTF-8">
+           <title>React Tutorial</title>
+       </head>
    
-   <body>
-     <div class="app" id="app"></div>
-     <script src="/bundle.js"></script>
-   </body>
+       <body>
+           <div class="app" id="app"></div>
+           <script src="/bundle.js"></script>
+       </body>
    
    </html>
    ```
@@ -85,7 +85,7 @@ dist/bundle.js 에서는 라이브러리 설치시 --save-dev 옵션을 붙였�
      ```javascript
      "scripts": { 
          ...
-     	"start": "webpack-dev-server --config ./webpack.config.js  --mode development"
+         "start": "webpack-dev-server --config ./webpack.config.js  --mode development"
      }
      ```
 

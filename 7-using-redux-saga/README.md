@@ -21,16 +21,16 @@ Redux 는 데이터의 순수한 흐름만을 담당한다. ( 액션발생 -> �
    import { ADD_COUNT, REQUEST_CURRENT_TIME, SET_CURRENT_TIME } from './action';
    
    export function calculate(state = { count: 1, currentTime: '' }, action) {
-     switch (action.type) {
-       case ADD_COUNT:
-         return Object.assign({}, state, { count: state.count + action.count });
-       case REQUEST_CURRENT_TIME:
-         return Object.assign({}, state, { currentTime: 'loading...' });
-       case SET_CURRENT_TIME:
-         return Object.assign({}, state, { currentTime: action.currentTime });
-       default:
-         return state;
-     }
+       switch (action.type) {
+           case ADD_COUNT:
+               return Object.assign({}, state, { count: state.count + action.count });
+           case REQUEST_CURRENT_TIME:
+               return Object.assign({}, state, { currentTime: 'loading...' });
+           case SET_CURRENT_TIME:
+               return Object.assign({}, state, { currentTime: action.currentTime });
+           default:
+               return state;
+       }
    }
    ```
 
@@ -44,26 +44,26 @@ Redux 는 데이터의 순수한 흐름만을 담당한다. ( 액션발생 -> �
    import { REQUEST_CURRENT_TIME, SET_CURRENT_TIME } from './action.js';
    
    function callTimeAPI() {
-     return fetch('http://worldclockapi.com/api/json/est/now')
-       .then((res) => {
-         if (res.ok) {
-           return res.json();
-         }
-         return null;
+       return fetch('http://worldclockapi.com/api/json/est/now')
+           .then((res) => {
+           if (res.ok) {
+               return res.json();
+           }
+           return null;
        })
-       .catch(() => (null));
+           .catch(() => (null));
    }
    
    function* requestCurrentTime(action) {
-     const info = yield call(callTimeAPI);
-     yield put({ type: SET_CURRENT_TIME, currentTime: info.currentDateTime });
+       const info = yield call(callTimeAPI);
+       yield put({ type: SET_CURRENT_TIME, currentTime: info.currentDateTime });
    }
    
    
    function* saga() {
-     yield [
-       takeLatest(REQUEST_CURRENT_TIME, requestCurrentTime),
-     ];
+       yield [
+           takeLatest(REQUEST_CURRENT_TIME, requestCurrentTime),
+       ];
    }
    
    export default saga;
@@ -80,8 +80,8 @@ Redux 는 데이터의 순수한 흐름만을 담당한다. ( 액션발생 -> �
    
    const sagaMiddleware = createSagaMiddleware();
    const store = createStore(
-     calculate,
-     applyMiddleware(sagaMiddleware)
+       calculate,
+       applyMiddleware(sagaMiddleware)
    );
    sagaMiddleware.run(saga);
    ...
@@ -94,39 +94,39 @@ Redux 는 데이터의 순수한 흐름만을 담당한다. ( 액션발생 -> �
    import { ADD_COUNT, REQUEST_CURRENT_TIME } from './action';
    
    class Home extends Component {
-     render() {
-       const { count, currentTime, addCount, requestTime } = this.props;
-       return (
-         <div>
-           <div>
-             <span>{count}</span>
-             <button onClick={addCount}>+</button>
-           </div>
-           <div>
-             currentTime: {currentTime} <button onClick={requestTime}>Get Current Time</button>
-           </div>
-         </div>
-       );
-     }
+       render() {
+           const { count, currentTime, addCount, requestTime } = this.props;
+           return (
+               <div>
+                   <div>
+                       <span>{count}</span>
+                       <button onClick={addCount}>+</button>
+                   </div>
+                   <div>
+                       currentTime: {currentTime} <button onClick={requestTime}>Get Current Time</button>
+                   </div>
+               </div>
+           );
+       }
    }
    
    const mapStateToProps = (state) => {
-     return {
-       count: state.count,
-       currentTime: state.currentTime
-     };
+       return {
+           count: state.count,
+           currentTime: state.currentTime
+       };
    };
    
    
    const mapDispatchToProps = (dispatch, ownProps) => {
-     return {
-       addCount: () => {
-         dispatch({ type: ADD_COUNT, count: 1 });
-       },
-       requestTime: () => {
-         dispatch({ type: REQUEST_CURRENT_TIME });
-       }
-     };
+       return {
+           addCount: () => {
+               dispatch({ type: ADD_COUNT, count: 1 });
+           },
+           requestTime: () => {
+               dispatch({ type: REQUEST_CURRENT_TIME });
+           }
+       };
    };
    ...
    ```

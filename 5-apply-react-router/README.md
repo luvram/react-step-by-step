@@ -13,10 +13,10 @@ React Router 는 refresh 없이 페이지의 이동을 도와주는 라이브러
    import { Link } from 'react-router-dom';
    
    const About = () => (
-     <div>
-       <h2>About</h2>
-       <Link to="/">go to Home</Link>
-     </div>
+       <div>
+           <h2>About</h2>
+           <Link to="/">go to Home</Link>
+       </div>
    );
    
    export default About;
@@ -31,14 +31,14 @@ React Router 는 refresh 없이 페이지의 이동을 도와주는 라이브러
    import { Link } from 'react-router-dom';
    
    class Home extends React.Component {
-     render() {
-       return (
-         <div>
-           <h2>Home</h2>
-           <Link to="/about">go to About</Link>
-         </div>
-       );
-     }
+       render() {
+           return (
+               <div>
+                   <h2>Home</h2>
+                   <Link to="/about">go to About</Link>
+               </div>
+           );
+       }
    }
    
    export default Home;
@@ -52,22 +52,22 @@ React Router 는 refresh 없이 페이지의 이동을 도와주는 라이브러
    import React from 'react';
    import { render } from 'react-dom';
    import {
-     BrowserRouter as Router,
-     Route
+       BrowserRouter as Router,
+       Route
    } from 'react-router-dom';
    
    import Home from './Home.jsx';
    import About from './About.jsx';
    
    render(
-     <Router>
-       <div>
-         <Route exact path="/" component={Home} />
-         <Route path="/about" component={About} />
-       </div>
-     </Router>
-     ,
-     document.getElementById('app')
+       <Router>
+           <div>
+               <Route exact path="/" component={Home} />
+               <Route path="/about" component={About} />
+           </div>
+       </Router>
+       ,
+       document.getElementById('app')
    );
    
    
